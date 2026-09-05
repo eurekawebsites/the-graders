@@ -80,31 +80,6 @@
     }
   }
 
-  // Google Drive's embedded player keeps its dark control overlay visible while
-  // the iframe owns focus on small iPhones. Release that focus after a tap so
-  // the player behaves like the user's manual "tap outside" workaround.
-  var reel=document.querySelector('.reel-frame iframe');
-  if(reel){
-    reel.setAttribute('tabindex','-1');
-    var reelBlurTimer=null;
-    function releaseReelFocusSoon(){
-      if(!window.matchMedia('(max-width:600px)').matches)return;
-      clearTimeout(reelBlurTimer);
-      reelBlurTimer=setTimeout(function(){
-        if(document.activeElement===reel){
-          reel.blur();
-          try{window.focus();}catch(_e){}
-        }
-      },900);
-    }
-    reel.addEventListener('focus',releaseReelFocusSoon);
-    window.addEventListener('blur',function(){
-      setTimeout(function(){
-        if(document.activeElement===reel)releaseReelFocusSoon();
-      },0);
-    });
-  }
-
   var els=document.querySelectorAll('.fade-up');
   if(!('IntersectionObserver' in window)){els.forEach(function(el){el.classList.add('in')});return}
   var o=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');o.unobserve(e.target)}})},{threshold:.15});
