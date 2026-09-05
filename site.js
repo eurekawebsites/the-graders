@@ -25,7 +25,7 @@
       + ' .booklet-tab{appearance:none;border:1px solid rgba(26,26,26,.22);background:rgba(255,255,255,.28);padding:12px 4px;font:700 .68rem "IBM Plex Mono",monospace;letter-spacing:1px;color:rgba(26,26,26,.75)}'
       + ' .booklet-tab[aria-selected="true"]{border-color:#c0392b;color:#c0392b;background:rgba(192,57,43,.06)}'
       + ' .booklet-viewport{position:relative;overflow:hidden;border:1px solid rgba(26,26,26,.14);background:#f4efe6;padding:16px 0 10px;box-shadow:0 8px 24px rgba(26,26,26,.08)}'
-      + ' .booklet-page{display:block;width:100%;height:auto}'
+      + ' .booklet-page{display:block;width:100%!important;max-width:100%!important;height:auto;margin:0!important}'
       + ' .booklet-page[hidden]{display:none}'
       + ' .booklet-controls{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:10px;margin-top:12px}'
       + ' .booklet-controls button{appearance:none;border:0;background:transparent;padding:8px 4px;font:700 .68rem "IBM Plex Mono",monospace;text-transform:uppercase;letter-spacing:1px;color:#1a1a1a}'
