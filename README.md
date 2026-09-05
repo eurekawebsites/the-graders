@@ -29,10 +29,13 @@ Desktop keeps the original full manifesto artwork.
 
 ## Reel
 
-The reel is embedded from Google Drive. On small mobile screens, `site.js` releases iframe focus shortly after playback starts so the Google Drive control overlay does not remain darkened over the video on iPhone-sized screens.
+Desktop and tablet use the embedded Google Drive reel player.
+
+On screens up to 600px, the embedded Drive iframe is hidden because its mobile control overlay can remain dark and clip the visible video on small iPhones. Instead, the page shows a branded **Play Reel** card that opens the same Google Drive preview in its own full browser viewport. This avoids the in-page Drive UI bug while preserving the desktop embed.
 
 ## Do not regress
 
 - Keep desktop manifesto presentation unchanged.
 - Keep root and `public/` shared files in sync while the legacy mirror exists.
+- Keep the mobile reel launcher in place unless the reel is moved to a hosting/player solution that behaves correctly on iOS.
 - Do not re-add Firebase Hosting config unless the deployment architecture is intentionally migrated.
