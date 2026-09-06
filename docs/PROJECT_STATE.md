@@ -6,19 +6,27 @@ Durable handoff for future ChatGPT/Claude sessions. This file is the project-lev
 - **Project:** The Graders
 - **Lifecycle state:** `active`
 - **Lifecycle reason:** none
-- **Resume point:** Wait for Mario's client acceptance review of the live site. If he requests brand refinements, ask for the original brand assets first and apply only the requested changes; otherwise treat the current live version as the delivered baseline. Eureka's internal Command Center publication of this new Project is source-registered but still pending the narrow Functions deploy/live-card verification recorded in `eurekawebsites/eureka-portal/docs/PROJECT_STATE.md`.
-- **Current application-code baseline:** `da3fe6c0`
-- **Current production application baseline:** `da3fe6c0`
+- **Resume point:** Wait for Mario to verify `lccmariofranco@gmail.com` with Web3Forms and submit one real test message from `https://thegraders.studio/`. If the message arrives, mark the contact setup verified and continue only with any specific client feedback; if no further issues are reported, treat the delivered website as accepted/current.
+- **Current application-code baseline:** `824ab1f4fa7bf63653c28869f7b649716f6c4b0f` (latest source change updates the Web3Forms contact recipient configuration in both root and `public/` copies)
+- **Current production application baseline:** `da3fe6c0b4e56bf8e20973a13f9dd1dc687c4647` (last client-verified live application baseline before the contact-recipient change; GitHub Pages auto-publishes `master`, but the new recipient configuration has not yet been confirmed by a real delivered form submission)
 - **Workflow status:** `waiting`
-- **Deployment status:** `in sync`
-- **Current phase:** Production polish complete; client acceptance and optional brand-asset refinements pending
-- **Overall status:** The live GitHub Pages site at `https://thegraders.studio/` contains the requested reel and social updates, mobile manifesto booklet, responsive/mobile fixes, SEO metadata, and cleaned deployment documentation. Technical QA is complete; the remaining client move is Mario's acceptance review. The Project is durably registered in Eureka source, but its internal Command Center card still needs the standard narrow Functions publication gate.
+- **Deployment status:** `unknown`
+- **Current phase:** Website delivered; client email verification and one real contact-form delivery test pending
+- **Overall status:** The Graders website is live on GitHub Pages with the requested social links, reel behavior, mobile manifesto booklet, responsive fixes, SEO foundation, and cleaned deployment setup. The contact form source now uses Mario's Web3Forms recipient configuration in both production-root and legacy `public/` copies. The only client-side verification still pending is Mario's Web3Forms email authorization plus one successful end-to-end form delivery test.
 
 ## Current state
 
-The Graders is an independent client website for Mario Franco's creative-production studio brand. The production site is served by GitHub Pages from the repository root on `master`, with `CNAME` providing the custom domain. The site includes the manifesto artwork, VFX reel, founder/team content, contact form, Instagram and LinkedIn links, SEO/social metadata, and the separate Eric García digital card at `/tarjeta.html`.
+The Graders is an independent client website for Mario Franco's creative-production studio brand. Production is served by GitHub Pages from the repository root on `master`, with `CNAME` providing the custom domain.
 
-Mobile-specific production behavior is intentional: the manifesto becomes a two-page booklet using real cropped PNG pages on small phones, and the reel uses a mobile launch-card flow instead of the embedded Google Drive player because the Drive iframe produced persistent dark controls / clipping on iPhone SE-sized screens. Desktop keeps the normal embedded reel and full manifesto artwork.
+The live design includes the manifesto artwork, VFX reel, founder/team content, contact form, Instagram and LinkedIn links, SEO/social metadata, and the separate Eric García digital card at `/tarjeta.html`.
+
+Mobile-specific behavior is intentional:
+
+- the manifesto becomes a two-page booklet using real cropped PNG pages on small phones;
+- the reel uses a dedicated mobile launch-card flow instead of the embedded Google Drive player because the Drive iframe produced persistent dark controls and bottom clipping on iPhone SE-sized screens;
+- desktop keeps the normal embedded reel and full manifesto artwork.
+
+The contact form posts through Web3Forms. On 2026-09-05 the recipient configuration was changed so Mario's address, `lccmariofranco@gmail.com`, receives website inquiries after he completes Web3Forms verification. The hidden access key itself should not be copied into durable documentation beyond the source files.
 
 ## Completed foundation
 
@@ -30,7 +38,8 @@ Mobile-specific production behavior is intentional: the manifesto becomes a two-
 - Technical SEO foundation includes canonical/Open Graph/Twitter metadata, structured data, `robots.txt`, and `sitemap.xml`.
 - GitHub Pages is the documented production path; vestigial Firebase Hosting config was removed so future sessions do not create a parallel dead deployment.
 - Root and legacy `public/` shared files were reconciled for the current production behavior.
-- Eureka source registration is complete: tracker commit `81b583a`, registry commit `1e9e8ea`, and `project-tracker-verify` push run `33988139624` passed. Production `projectTrackerApi` / `commandCenterApi` publication and authenticated live-card verification are still pending in the Eureka parent tracker.
+- Contact recipient configuration was updated in both `index.html` and `public/index.html` and read back byte-identically from `master` at source baseline `824ab1f4`.
+- Eureka source registration for The Graders exists; the separate Eureka Command Center publication gate remains owned by `eurekawebsites/eureka-portal/docs/PROJECT_STATE.md` and must not be duplicated as The Graders delivery state.
 
 ## Important decisions
 
@@ -38,29 +47,33 @@ Mobile-specific production behavior is intentional: the manifesto becomes a two-
 - Production hosting is **GitHub Pages from root `master`**. Do not reintroduce Firebase Hosting unless an intentional migration is approved.
 - Preserve the client's artwork rather than rebuilding the many hand-drawn manifesto details in HTML.
 - On small phones, use real cropped booklet images, not CSS background-position crops.
-- On small phones, do not fight the Google Drive iframe overlay with more focus hacks; use the mobile reel launch flow.
+- On small phones, do not fight the Google Drive iframe overlay with focus hacks; use the mobile reel launch flow.
 - The engagement is intentionally low-fee. Human acceptance testing is delegated to Mario; Eureka handles technical implementation/QA.
-- Do not invent brand assets. If Mario wants the favicon, exact logo/font treatment, social-share image, or other brand elements changed, ask him for the original source assets first.
+- Do not invent brand assets. If Mario wants favicon, exact logo/font treatment, social-share artwork, or another brand element changed, ask him for the original source asset first.
 - Keep the existing Eric García `/tarjeta.html` artifact intact unless Tarjetas Digitales work explicitly requires a change.
-- Internal Eureka Command Center publication is an administrative projection step; it does not change the fact that the client production site itself is already deployed and in sync.
+- Web3Forms recipient verification is a client-side dependency. Do not claim end-to-end contact delivery is verified until Mario authorizes the address and confirms receipt of a real test submission.
+- Internal Eureka Command Center publication is an administrative projection owned by Eureka's tracker, not by this Project's client-delivery NEXT.
 
 ## Open work
 
-- Mario/client acceptance review of the live production site.
-- Optional replacement of favicon / exact logo or font / social-share artwork if Mario supplies authoritative brand assets and requests the change.
-- Eureka internal publication gate: deploy the registry entry through `projectTrackerApi` + `commandCenterApi` and verify the authenticated live Project card; ownership and exact NEXT live in `eurekawebsites/eureka-portal/docs/PROJECT_STATE.md`.
+- Mario must verify `lccmariofranco@gmail.com` through the Web3Forms email.
+- After verification, submit one real test message from the production website and have Mario confirm it arrived.
+- Optional brand refinements only if Mario requests them and supplies authoritative source assets.
+- Client acceptance remains open until Mario confirms there are no further issues.
 - Later housekeeping may remove the legacy `public/` mirror once no workflow depends on it; do not do that during client polish without a deliberate cleanup pass.
 
 ## NEXT
 
-1. Wait for Mario to review `https://thegraders.studio/` on his devices and confirm acceptance or report a specific issue.
-2. If he requests a brand change, obtain the original asset(s) first, make only the requested refinement, push to `master`, and re-check production.
-3. In parallel, Eureka Admin must complete the standard narrow Functions + authenticated live-card publication gate for this newly registered Project.
-4. If Mario reports no issue, mark the client delivery accepted/current without reopening design work.
+1. Mario verifies `lccmariofranco@gmail.com` with Web3Forms.
+2. Submit one real test message through `https://thegraders.studio/` and confirm Mario receives it.
+3. If delivery succeeds and Mario reports no other issue, mark Workflow `current`, Deployment `in sync`, and the client delivery accepted.
+4. If Mario reports a specific problem, change only that issue and re-test production.
 
 ## Handoff
 
-Start from `eurekawebsites/the-graders` `master`, then read this file and `README.md`. Verify the current live domain before editing. Treat `da3fe6c0` as the current application/production baseline unless newer application code exists. Do not migrate hosting, rebuild the manifesto, or replace brand assets speculatively. The next client move is acceptance, not another redesign pass. For Command Center publication status, read `eurekawebsites/eureka-portal/docs/PROJECT_STATE.md` rather than duplicating Eureka deployment state here.
+Start from `eurekawebsites/the-graders` `master`, then read this file and `README.md`. Current source baseline is `824ab1f4`; the last explicitly client-verified live application baseline before the contact-recipient change is `da3fe6c0`. Verify the production form delivery before promoting Deployment back to `in sync`. Do not migrate hosting, rebuild the manifesto, or replace brand assets speculatively.
+
+For Eureka Admin / Command Center publication status, read `eurekawebsites/eureka-portal/docs/PROJECT_STATE.md`; do not duplicate that internal deployment state here.
 
 ## Maintenance rule
 
