@@ -4,6 +4,7 @@ Durable handoff for future ChatGPT/Claude sessions. This file is the project-lev
 
 - **Last updated:** 2026-09-05
 - **Project:** The Graders
+- **Implementation owner:** The Graders Agent — explicitly assigned by Aster on 2026-09-22.
 - **Lifecycle state:** `active`
 - **Lifecycle reason:** none
 - **Resume point:** Wait for Mario to verify `lccmariofranco@gmail.com` with Web3Forms and submit one real test message from `https://thegraders.studio/`. If the message arrives, mark the contact setup verified and continue only with any specific client feedback; if no further issues are reported, treat the delivered website as accepted/current.
